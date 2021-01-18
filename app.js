@@ -17,5 +17,17 @@ function onQuestionSubmit() {
     /*
     * Process data when user submits a question
     */
-   console.log(getSelectedOption());
+   
+    // get the selected option
+    let selectedOptionIndex = getSelectedOption();
+    if (selectedOptionIndex === -1) {
+        // In case user has not selected any option
+        // show an error alert on the screen
+        let feedbackAlert = document.getElementById('question-feedback-alert');
+        feedbackAlert.classList.remove('alert-primary');
+        feedbackAlert.classList.add('alert-danger');
+        feedbackAlert.innerHTML = 'Please select an option!';
+        return;
+    }
+    console.log('Selected option index: ', selectedOptionIndex);
 }
