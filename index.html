@@ -1,25 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Quiz App</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-	<!-- External Links -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
 
-	<!-- Navbar -->
-	<nav class="navbar navbar-dark bg-dark">
-		<div class="container-fluid">
-		  <span class="navbar-brand mb-0 h1">Quiz App</span>
-		</div>
-	</nav>
-	  
-</body>
+    <!-- External Links -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Quiz App</span>
+      </div>
+    </nav>
+
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title h3" id="question-statement">
+          Question Statement
+        </h5>
+        <div class="m-2" id="options">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="optradio"
+              />Option 1
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="optradio"
+              />Option 2
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="optradio"
+              />Option 3
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="optradio"
+              />Option 4
+            </label>
+          </div>
+        </div>
+        <a href="#" class="btn btn-success">Submit</a>
+      </div>
+    </div>
+  </body>
 </html>
