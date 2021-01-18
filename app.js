@@ -92,3 +92,42 @@ function setQuestionFeebackAlert(message, className) {
     feedbackAlert.classList.add("alert", className);
     feedbackAlert.innerHTML = message;
 }
+
+// constructor function for creating questions
+function Question(statement, options, correctOptionIndex, score) {
+    this.statement = statement;
+    this.options = options;
+    this.correctOptionIndex = correctOptionIndex;
+    this.score = score;
+}
+
+// Create create random Questions
+function getRandomQuestions(max) {
+    const baseQustionStatement = "This is Question Statement";
+    const baseOptionStatement = "This is Option";
+    const maxOptions = 4;
+    const scores = [5, 10, 15, 20];
+
+    return range(0, max - 1).map((e) => {
+        let questionStatement = `${baseQustionStatement} ${e + 1}`;
+        const options = range(0, maxOptions - 1).map(
+            (o) => `${baseOptionStatement} ${o + 1}`
+        );
+        const correctOptionIndex = Math.floor(Math.random() * maxOptions); // determine a random correct option
+        const score = scores[Math.floor(Math.random() * scores.length)]; // determine a random score
+        return new Question(
+            questionStatement,
+            options,
+            correctOptionIndex,
+            score
+        );
+    });
+}
+
+// generate an array of number in a range
+function range(start, end) {
+    if (start === end) return [start];
+    return [start, ...range(start + 1, end)];
+}
+
+console.log(getRandomQuestions(5));
