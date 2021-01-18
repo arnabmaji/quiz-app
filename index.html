@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz App</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz App</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
 
-    <!-- External Links -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Quiz App</span>
-      </div>
-    </nav>
+        <!-- External Links -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Quiz App</span>
+            </div>
+        </nav>
 
-    <div class="card m-3">
-      <div class="card-body">
-        <h5 class="card-title h3" id="question-statement">
-          Question Statement
-        </h5>
-        <div class="m-2" id="options"></div>
-        <div
-          class="alert alert-primary"
-          role="alert"
-          id="question-feedback-alert"
-        >
-          Select your Answer!
+        <div class="card m-3">
+            <div class="card-body">
+                <h5 class="card-title h3" id="question-statement">
+                    Question Statement
+                </h5>
+                <div class="m-2" id="options"></div>
+                <div
+                    class="alert alert-primary"
+                    role="alert"
+                    id="question-feedback-alert"
+                >
+                    Select your Answer!
+                </div>
+                <button
+                    class="btn btn-success"
+                    onclick="onQuestionSubmit()"
+                    id="question-submit-button"
+                >
+                    Submit
+                </button>
+            </div>
         </div>
-        <button class="btn btn-success" onclick="onQuestionSubmit()">
-          Submit
-        </button>
-      </div>
-    </div>
-    <script src="./app.js"></script>
-  </body>
+        <script src="./app.js"></script>
+    </body>
 </html>
