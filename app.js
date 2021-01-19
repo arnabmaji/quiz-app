@@ -1,12 +1,15 @@
 // Quiz Data
-const maxQuestions = 10;
+const maxQuestions = 3;
 let questions = getRandomQuestions(maxQuestions);
 
 const state = {
-    currentQuestionIndex: -1,
-    score: 0,
-    totalScore: 0,
+    reset() {
+        this.currentQuestionIndex = -1;
+        this.score = 0;
+        this.totalScore = 0;
+    },
 };
+state.reset();
 
 // DOM Elements
 const nextQuestionButton = document.getElementById("next-question-button");
@@ -19,10 +22,22 @@ const scoreCard = document.getElementById("score-card");
 const questionCard = document.getElementById("question-card");
 const resultCard = document.getElementById("result-card");
 
-// Main
-gotoNextQuestion();
-displayAnswers();
-displayScore();
+startQuiz();
+
+function startQuiz() {
+    // Set game state to default
+    state.reset();
+    questionCard.classList.remove("d-none");
+    resultCard.classList.add("d-none");
+    gotoNextQuestion();
+}
+
+function showResult() {
+    questionCard.classList.add("d-none");
+    resultCard.classList.remove("d-none");
+    displayScore();
+    displayAnswers();
+}
 
 function displayQuestion(question) {
     // Display question and its all available options on the page
@@ -108,8 +123,7 @@ function gotoNextQuestion() {
      */
 
     if (++state.currentQuestionIndex >= maxQuestions) {
-        console.log("Quiz has ended!");
-        console.log(`Score: ${state.score}/${state.totalScore}`);
+        showResult();
         return;
     }
 
