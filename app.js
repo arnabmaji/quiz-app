@@ -15,10 +15,14 @@ const feedbackAlert = document.getElementById("question-feedback-alert");
 const questionStatmentDiv = document.getElementById("question-statement");
 const optionsDiv = document.getElementById("options");
 const answerCard = document.getElementById("answer-card");
+const scoreCard = document.getElementById("score-card");
+const questionCard = document.getElementById("question-card");
+const resultCard = document.getElementById("result-card");
 
 // Main
 gotoNextQuestion();
 displayAnswers();
+displayScore();
 
 function displayQuestion(question) {
     // Display question and its all available options on the page
@@ -145,6 +149,11 @@ function displayAnswers() {
             return listItem;
         })
         .forEach((e) => answerCard.appendChild(e));
+}
+
+function displayScore() {
+    // Display Score in the score card
+    scoreCard.innerHTML = `Score: ${state.score} / ${state.totalScore}`;
 }
 
 // constructor function for creating questions
