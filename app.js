@@ -1,5 +1,5 @@
 // Quiz Data
-const maxQuestions = 10;
+const maxQuestions = 3;
 let questions = getRandomQuestions(maxQuestions);
 
 const state = {
@@ -81,13 +81,13 @@ function onQuestionSubmit() {
         return;
     }
 
+    const currentQuestion = questions[state.currentQuestionIndex];
+    state.totalScore += currentQuestion.score; // keep track of total score
     // Validate if the user has selected the correct option
-    if (
-        selectedOptionIndex ===
-        questions[state.currentQuestionIndex].correctOptionIndex
-    )
+    if (selectedOptionIndex === currentQuestion.correctOptionIndex) {
         setQuestionFeebackAlert("Correct answer!", "alert-success");
-    else setQuestionFeebackAlert("Wrong answer!", "alert-danger");
+        state.score += currentQuestion.score; // increase user score on correct answer
+    } else setQuestionFeebackAlert("Wrong answer!", "alert-danger");
 
     // disable the submit button
     submitQuestionButton.disabled = true;
@@ -102,7 +102,8 @@ function gotoNextQuestion() {
      */
 
     if (++state.currentQuestionIndex >= maxQuestions) {
-        console.log("Quiz has eneded!");
+        console.log("Quiz has ended!");
+        console.log(`Score: ${state.score}/${state.totalScore}`);
         return;
     }
 
