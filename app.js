@@ -109,10 +109,10 @@ function onQuestionSubmit() {
         state.score += currentQuestion.score; // increase user score on correct answer
     } else setQuestionFeebackAlert("Wrong answer!", "alert-danger");
 
-    // disable the submit button
+    document
+        .querySelectorAll("#options input[type='radio']")
+        .forEach((radio) => (radio.disabled = true));
     submitQuestionButton.disabled = true;
-
-    // show the next button
     nextQuestionButton.classList.remove("d-none");
 }
 
