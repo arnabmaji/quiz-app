@@ -1,5 +1,5 @@
 // Quiz Data
-const maxQuestions = 3;
+const maxQuestions = 10;
 let questions = getRandomQuestions(maxQuestions);
 
 const state = {
@@ -14,9 +14,11 @@ const submitQuestionButton = document.getElementById("question-submit-button");
 const feedbackAlert = document.getElementById("question-feedback-alert");
 const questionStatmentDiv = document.getElementById("question-statement");
 const optionsDiv = document.getElementById("options");
+const answerCard = document.getElementById("answer-card");
 
 // Main
 gotoNextQuestion();
+displayAnswers();
 
 function displayQuestion(question) {
     // Display question and its all available options on the page
@@ -118,6 +120,31 @@ function setQuestionFeebackAlert(message, className) {
     feedbackAlert.className = "";
     feedbackAlert.classList.add("alert", className);
     feedbackAlert.innerHTML = message;
+}
+
+function displayAnswers() {
+    /*
+     * Display all questions and their answers in the answer card
+     */
+
+    answerCard.innerHTML = "";
+    questions
+        .map((q) => {
+            const badge = document.createElement("span");
+            badge.className = "badge bg-success";
+            badge.appendChild(
+                document.createTextNode(q.options[q.correctOptionIndex])
+            );
+
+            const listItem = document.createElement("li");
+            listItem.className =
+                "list-group-item d-flex justify-content-between align-items-center";
+
+            listItem.appendChild(document.createTextNode(q.statement));
+            listItem.appendChild(badge);
+            return listItem;
+        })
+        .forEach((e) => answerCard.appendChild(e));
 }
 
 // constructor function for creating questions
