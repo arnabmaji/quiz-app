@@ -23,11 +23,15 @@
             </div>
         </nav>
 
+        <!-- Question Card -->
         <div class="card m-3">
             <div class="card-body">
-                <h5 class="card-title h3" id="question-statement">
+                <div
+                    class="card-title h3 font-weight-bold"
+                    id="question-statement"
+                >
                     Question Statement
-                </h5>
+                </div>
                 <div class="m-2" id="options"></div>
                 <div
                     class="alert alert-primary"
@@ -50,6 +54,20 @@
                 >
                     Next
                 </button>
+            </div>
+        </div>
+
+        <!-- Score and Answer Card -->
+        <div class="card m-2" id="result-card">
+            <div class="card-body">
+                <div class="card-title h3 font-weight-bold">
+                    Quiz has Ended!
+                </div>
+                <div class="m-2 h4" id="score-card">Score: 100</div>
+                <div class="m-2">
+                    <h4>Answer Key</h4>
+                    <div id="answer-card"></div>
+                </div>
             </div>
         </div>
         <script src="./app.js"></script>
