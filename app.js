@@ -1,5 +1,5 @@
 // Quiz Data
-const maxQuestions = 3;
+const maxQuestions = 2;
 let questions = getRandomQuestions(maxQuestions);
 
 const state = {
@@ -9,7 +9,6 @@ const state = {
         this.totalScore = 0;
     },
 };
-state.reset();
 
 // DOM Elements
 const nextQuestionButton = document.getElementById("next-question-button");
