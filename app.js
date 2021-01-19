@@ -1,24 +1,29 @@
-let currentQuestion = {
-    statement: "This is Question Statement",
-    options: [
-        "This is Option A",
-        "This is Option B",
-        "This is Option C",
-        "This is Option D",
-    ],
-    correctOptionIndex: 1,
-    score: 10,
+// Quiz Data
+const maxQuestions = 10;
+let questions = getRandomQuestions(maxQuestions);
+
+const state = {
+    currentQuestionIndex: -1,
+    score: 0,
+    totalScore: 0,
 };
 
-displayQuestion(currentQuestion);
+// DOM Elements
+const nextQuestionButton = document.getElementById("next-question-button");
+const submitQuestionButton = document.getElementById("question-submit-button");
+const feedbackAlert = document.getElementById("question-feedback-alert");
+const questionStatmentDiv = document.getElementById("question-statement");
+const optionsDiv = document.getElementById("options");
+
+// Main
+gotoNextQuestion();
 
 function displayQuestion(question) {
     // Display question and its all available options on the page
 
-    let questionStatmentDiv = document.getElementById("question-statement");
-    let optionsDiv = document.getElementById("options");
-
     questionStatmentDiv.innerHTML = question.statement;
+    optionsDiv.innerHTML = "";
+
     // map each option to a radio input element
     question.options
         .map((option) => {
@@ -77,17 +82,38 @@ function onQuestionSubmit() {
     }
 
     // Validate if the user has selected the correct option
-    if (selectedOptionIndex === currentQuestion.correctOptionIndex)
+    if (
+        selectedOptionIndex ===
+        questions[state.currentQuestionIndex].correctOptionIndex
+    )
         setQuestionFeebackAlert("Correct answer!", "alert-success");
     else setQuestionFeebackAlert("Wrong answer!", "alert-danger");
 
     // disable the submit button
-    document.getElementById("question-submit-button").disabled = true;
+    submitQuestionButton.disabled = true;
+
+    // show the next button
+    nextQuestionButton.classList.remove("d-none");
+}
+
+function gotoNextQuestion() {
+    /*
+     * Display next question on the page
+     */
+
+    if (++state.currentQuestionIndex >= maxQuestions) {
+        console.log("Quiz has eneded!");
+        return;
+    }
+
+    displayQuestion(questions[state.currentQuestionIndex]);
+    setQuestionFeebackAlert("Select your answer!", "alert-primary");
+    submitQuestionButton.disabled = false;
+    nextQuestionButton.classList.add("d-none");
 }
 
 function setQuestionFeebackAlert(message, className) {
     // Update question feedback alert as per params
-    let feedbackAlert = document.getElementById("question-feedback-alert");
     feedbackAlert.className = "";
     feedbackAlert.classList.add("alert", className);
     feedbackAlert.innerHTML = message;
@@ -129,5 +155,3 @@ function range(start, end) {
     if (start === end) return [start];
     return [start, ...range(start + 1, end)];
 }
-
-console.log(getRandomQuestions(5));
